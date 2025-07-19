@@ -1,42 +1,99 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: linear-gradient(to right, #531F8B 0%, #483993 24%, #483993 47%, #2B4292 55%, #2B4292 64%, #2E2C83 82%, #2E2C83 100%);
+  font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: white;
+}
+
+
 #root {
-  max-width: 1280px;
+  width: 100%;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 2rem;
+}
+
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.SearchBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  height: '56px'
+  borderColor: rgba(211, 211, 211, 0.751);
+}/*
+
+/* Gradient search button */
+.SearchButton {
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(to right, #D946EF, #6366F1);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  height: '56px'
+}
+
+.SearchButton:hover {
+  background: linear-gradient(to right, #f472b6, #818cf8);
+}
+
+/* Optional layout helpers */
+.track-section {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Music Note Icon Style */
+.music-icon-white {
+  color: white !important;
+}
+
+/* Playlist Placeholder */
+.playlist-placeholder {
+  color: rgba(255, 255, 255, 0.6);
   text-align: center;
+  padding-top: 1rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+/* Save to Spotify button */
+.save-to-spotify {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem 2rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  border: none;
+  width: 100%;
+  max-width: 360px;
+  cursor: not-allowed;
+  text-align: center;
 }
