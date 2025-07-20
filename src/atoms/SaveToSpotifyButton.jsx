@@ -15,25 +15,26 @@ const SaveToSpotifyButton = ({ playlist, playlistName, setPlaylist, setSearchRes
 
   return (
     <Button
-      variant="contained"
-      startIcon={<LibraryMusicIcon />}
-      onClick={handleClick}
-      isDisabled={playlist.length === 0}
-      sx={{
-        margin: '0 auto',
-        background: 'linear-gradient(to right, #8e24aa, #3949ab)',
-        borderRadius: '1.5rem',
-        padding: '0.75rem 2rem',
-        fontWeight: 'bold',
-        fontSize: '1rem',
-        width: '75%',
-        color: 'white',
-        opacity: playlist.length === 0 ? 0.4 : 1,
-        '&:hover': {
-        background: 'linear-gradient(to right, #ab47bc, #5c6bc0)',
-      }
-      }}
-    >
+  variant="contained"
+  startIcon={<LibraryMusicIcon />}
+  onClick={handleClick}
+  disabled={playlist.length === 0}
+  sx={{
+    margin: '0 auto',
+    background: 'linear-gradient(to right, #8e24aa, #3949ab)',
+    borderRadius: '1.5rem',
+    padding: '0.75rem 2rem',
+    fontWeight: 'bold',
+    fontSize: '1rem',
+    width: '75%',
+    color: 'white',
+    opacity: playlist.length === 0 ? 0.4 : 1,
+    '&:hover': {
+      background: 'linear-gradient(to right, #ab47bc, #5c6bc0)',
+    },
+  }}
+>
+
       SAVE TO SPOTIFY
     </Button>
   );

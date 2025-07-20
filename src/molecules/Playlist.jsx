@@ -51,19 +51,22 @@ const Playlist = ({
           }}
         >
           <input
+            id="playlist-name-input"
+            name="playlistName"
             type="text"
             value={playlistName}
             onChange={(e) => setPlaylistName(e.target.value)}
             style={{
-            background: 'transparent',
-            border: 'none',
-            fontSize: '1.5rem',
-            fontWeight: 'bold',
-            color: 'white',
-            textAlign: 'center',
-            outline: 'none',
-  }}
-/>
+              background: 'transparent',
+              border: 'none',
+              fontSize: '1.5rem',
+              fontWeight: 'bold',
+              color: 'white',
+              textAlign: 'center',
+              outline: 'none',
+            }}
+          />
+
 
           <Box
             sx={{
