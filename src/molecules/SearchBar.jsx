@@ -1,64 +1,59 @@
-import React from 'react';
-import Box from '@mui/material/Box';
+import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
+import SearchButton from '../atoms/SearchButton';
 
-const SearchBar = ({ onSearch, searchTerm, setSearchTerm }) => {
-  const handleKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      onSearch();
+const SearchBar = ({ onSearch }) => {
+  const [term, setTerm] = useState('');
+
+  // Handle input changes
+  const handleChange = (e) => {
+    setTerm(e.target.value);
+  };
+
+  // Trigger Spotify search
+  const handleSearch = () => {
+    if (term.trim() !== '') {
+      onSearch(term);
     }
   };
 
   return (
-    <Box sx={{ width: '100%', maxWidth: '700px' }}>
+    <div className="SearchBar" style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
       <TextField
-        fullWidth
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') onSearch();
-        }}
-        placeholder="Search for a song, artist, or album"
+        value={term}
+        onChange={handleChange}
+        placeholder="Search for a song"
         variant="outlined"
         sx={{
-          height: '56px',
-          background: 'linear-gradient(to right, #371a70, #2b2b80)',
-          borderRadius: '8px',
-
+          width: '400px',
+          backgroundColor: 'white',
+          borderRadius: '12px',
           '& .MuiOutlinedInput-root': {
-            color: 'white',
-            height: '56px',
-            borderRadius: '8px',
-            paddingRight: '8px',
-
+            paddingRight: 0,
+            borderRadius: '12px',
             '& fieldset': {
-              borderColor: '#999', // Default border
-              borderWidth: '1px',
+              borderColor: '#ccc',
             },
             '&:hover fieldset': {
-              borderColor: '#aaa', // On hover
+              borderColor: '#aaa',
             },
             '&.Mui-focused fieldset': {
-              borderColor: '#aaa', // On focus
-              boxShadow: 'none',   // Remove glow
+              borderColor: '#888',
             },
-          },
-
-          '& input::placeholder': {
-            color: 'rgba(255, 255, 255, 0.6)',
           },
         }}
         InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <SearchIcon sx={{ color: 'rgba(255, 255, 255, 0.6)' }} />
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon style={{ color: '#888' }} />
             </InputAdornment>
           ),
         }}
       />
-    </Box>
+      <SearchButton onClick={handleSearch} />
+    </div>
   );
 };
 
