@@ -11,7 +11,15 @@ import { Save } from "@mui/icons-material";
 import SaveToSpotifyButton from "../atoms/SaveToSpotifyButton";
 import Track from "./Track";
 
-const Playlist = ({ playlist, onRemove }) => {
+const Playlist = ({
+  playlist,
+  onRemove,
+  playlistName,
+  setPlaylistName,
+  setPlaylist,
+  setSearchResults
+}) => {
+
   return (
     <Box
       sx={{
@@ -42,9 +50,21 @@ const Playlist = ({ playlist, onRemove }) => {
             justifyContent: "space-between",
           }}
         >
-          <Typography variant="h6" fontWeight="bold" color="white">
-            My Playlist
-          </Typography>
+          <input
+            type="text"
+            value={playlistName}
+            onChange={(e) => setPlaylistName(e.target.value)}
+            style={{
+            background: 'transparent',
+            border: 'none',
+            fontSize: '1.5rem',
+            fontWeight: 'bold',
+            color: 'white',
+            textAlign: 'center',
+            outline: 'none',
+  }}
+/>
+
           <Box
             sx={{
               backgroundColor: "#ffffff20",
@@ -81,7 +101,14 @@ const Playlist = ({ playlist, onRemove }) => {
           ))}
         </List>
       )}
-      {playlist.length > 0 && <SaveToSpotifyButton />}
+      {playlist.length > 0 && <SaveToSpotifyButton
+  playlist={playlist}
+  playlistName={playlistName}
+  setPlaylist={setPlaylist}
+  setSearchResults={setSearchResults}
+  setPlaylistName={setPlaylistName}
+/>
+}
     </Box>
   );
 };

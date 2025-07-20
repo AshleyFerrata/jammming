@@ -10,7 +10,8 @@ import SearchButton from "./atoms/SearchButton";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Spotify from './utils/Spotify';
+import Spotify from './utils/Spotify'; 
+
 
 
 const tracks = [
@@ -74,8 +75,8 @@ const tracks = [
 
 function App() {
   const [searchResults, setSearchResults] = useState(tracks);
-
   const [playlist, setPlaylist] = useState([]);
+  const [playlistName, setPlaylistName] = useState('New Playlist');
 
   const handleAddToPlaylist = (track) => {
     if (!playlist.find((t) => t.id === track.id)) {
@@ -104,12 +105,14 @@ function App() {
     });
   };
 
-  const handleSearch = () => {
-    console.log("Search button clicked");
+  const handleSearch = (term) => {
+    Spotify.search(term).then(results => {
+      setSearchResults(results);
+  });
+};
     // Here you would typically call a search function to fetch results from an API
     // For now, we'll just log the action
-  };
-  console.log(searchResults);
+
   return (
     <Box sx={{ padding: "2rem", minHeight: "100vh" }}>
       {/* HEADER */}
@@ -156,7 +159,8 @@ function App() {
           marginBottom: "2rem",
         }}
       >
-        <SearchBar />
+        <SearchBar onSearch={handleSearch} />
+
         <SearchButton onClick={handleSearch} />
       </Box>
 
@@ -170,7 +174,15 @@ function App() {
         }}
       >
         <Tracklist arrayOfTracks={searchResults} onAdd={handleAddToPlaylist} />
-        <Playlist playlist={playlist} onRemove={handleRemoveFromPlaylist} />
+        <Playlist
+          playlist={playlist}
+          onRemove={handleRemoveFromPlaylist}
+          playlistName={playlistName}
+          setPlaylistName={setPlaylistName}
+          setPlaylist={setPlaylist}
+          setSearchResults={setSearchResults}
+/>
+
       </Box>
     </Box>
   );

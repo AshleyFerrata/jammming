@@ -4,11 +4,22 @@ import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 
-const SearchBar = () => {
+const SearchBar = ({ onSearch }) => {
+  const [term, setTerm] = React.useState('');
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      onSearch(term);
+    }
+  };
+
   return (
     <Box sx={{ width: '100%', maxWidth: '700px' }}>
       <TextField
         fullWidth
+        value={term}
+        onChange={(e) => setTerm(e.target.value)}
+        onKeyDown={handleKeyPress}
         placeholder="Search for a song, artist, or album"
         variant="outlined"
         sx={{
