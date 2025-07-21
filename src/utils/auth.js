@@ -1,7 +1,12 @@
 // src/utils/auth.js
 
 const clientId = "cbda996d8e014cb793628f6286ae54d1";
-const redirectUri = "http://127.0.0.1:5174"; // Must match Spotify dashboard
+const redirectUri =
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1"
+    ? "http://127.0.0.1:5174"
+    : "https://jammming-ferrata.netlify.app";
+
 const scopes = [
   "playlist-modify-public",
   "playlist-modify-private",
@@ -97,7 +102,6 @@ export async function fetchAccessToken() {
     return null;
   }
 }
-
 
 export function getAccessToken() {
   return localStorage.getItem("access_token");
