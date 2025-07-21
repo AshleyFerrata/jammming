@@ -120,11 +120,12 @@ h1 {
 
 .Track {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   background-color: rgba(255, 255, 255, 0.05);
   padding: 0.75rem 1rem;
   border-radius: 12px;
   transition: background-color 0.2s ease;
+  min-height: 4rem;
 }
 
 .Track:hover {
@@ -138,6 +139,7 @@ h1 {
   border-radius: 50%;
   transition: background-color 0.3s ease;
   padding: 0.25rem;
+  margin-top: 1rem;
 }
 
 .Track-action:hover {
@@ -158,6 +160,9 @@ h1 {
 .Track-icon {
   margin-right: 12px;
   flex-shrink: 0;
+}
+.Track-icon-img {
+  border-radius: 10px;
 }
 
 .Track-icon-bg {
@@ -190,4 +195,40 @@ h1 {
 .Track-info {
   flex-grow: 1;
   min-width: 0;
+}
+.empty-playlist-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.empty-icon {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.empty-icon svg {
+  font-size: 36px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.empty-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.empty-subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.7;
 }

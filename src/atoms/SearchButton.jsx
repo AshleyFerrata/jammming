@@ -5,6 +5,7 @@ const SearchButton = ({ onClick }) => {
   return (
     <Button
       className="SearchButton"
+      type="submit"
       onClick={onClick}
       sx={{
         height: "56px",

@@ -1,6 +1,7 @@
 import React from 'react';
 import Tracklist from './Tracklist';
 import SaveToSpotifyButton from '../atoms/SaveToSpotifyButton';
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
 
 const Playlist = ({
   playlistName,
@@ -9,35 +10,44 @@ const Playlist = ({
   onNameChange,
   onSave
 }) => {
-  // Controlled input for playlist renaming
   const handleNameChange = (e) => {
     onNameChange(e.target.value);
   };
 
+  const isEmpty = playlistTracks.length === 0;
+
   return (
-<div className="Playlist">
-  <div className="panel-header">
-    <input 
-      value={playlistName} 
-      onChange={handleNameChange} 
-      className="playlist-title-input"
-      placeholder="New Playlist"
-    />
-    <span className="track-count">{playlistTracks.length} tracks</span>
-  </div>
+    <div className="Playlist">
+      <input 
+        value={playlistName} 
+        onChange={handleNameChange} 
+        className="playlist-title-input"
+        placeholder="New Playlist"
+      />
 
-  <Tracklist 
-    tracks={playlistTracks} 
-    onRemove={onRemove} 
-    isRemoval={true}
-  />
+      <div className="playlist-content">
+        {isEmpty ? (
+          <div className="empty-playlist-state">
+            <div className="empty-icon">
+              <MusicNoteIcon fontSize="large" />
+            </div>
+            <p className="empty-title">Your playlist is empty</p>
+            <p className="empty-subtitle">Add tracks from the search results</p>
+          </div>
+        ) : (
+          <Tracklist 
+            tracks={playlistTracks} 
+            onRemove={onRemove} 
+            isRemoval={true}
+          />
+        )}
+      </div>
 
-  <SaveToSpotifyButton 
-    onClick={onSave} 
-    disabled={playlistTracks.length === 0}
-  />
-</div>
-
+      <SaveToSpotifyButton 
+        onClick={onSave} 
+        disabled={isEmpty}
+      />
+    </div>
   );
 };
 
